@@ -10,9 +10,9 @@
         </mt-swipe>
         <!--九空格-->
          <ul class="mui-table-view mui-grid-view mui-grid-9 my-ul">
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3 "><a href="#" class="my-box">
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3 "><router-link to="/home/newLink" class="my-box">
                                 <img src="@/assets/menu1.png" alt="">
-		                    <div class="mui-media-body">新闻资讯</div></a></li>
+		                    <div class="mui-media-body">新闻资讯</div></router-link></li>
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#" class="my-box">
                                 <img src="@/assets/menu2.png" alt="">
 		                    <div class="mui-media-body">图片分享</div></a></li>
@@ -43,7 +43,8 @@ export default {
     },
     methods: {
        getBanner(){
-            this.$http.get('http://www.lovegf.cn:8899/api/getlunbo')
+            
+            this.$http.get('api/getlunbo')
             .then(res=>this.banners=res.body.message)
        }
     }
