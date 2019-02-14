@@ -29,8 +29,8 @@ import { Field } from 'mint-ui';
 //安装表单编辑器
 Vue.component(Field.name, Field);
 //注册全局评论组件
-import conainer from '@/components/container'
-Vue.component('conainer',conainer)
+import container from '@/components/container'
+Vue.component('container',container)
 //安装请求
 Vue.use(VueResource)
 //顶部导航栏

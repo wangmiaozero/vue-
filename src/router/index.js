@@ -17,8 +17,8 @@ export default new Router({
     {path: '/search',component:searchComponent},
     {path: '/shopcar',component:shopcarComponent},
     {path: '/home/newLink',component:newLinkComponent},
-    {path: '/home/newInfo/:id',component:newInfoComponen}
+    {path: '/home/newInfo/:id',component:newInfoComponen},
 
   ],
-  linkActiveClass:'mui-active'//替换类名
+  linkActiveClass:'mui-active'//替换类名 类库
 })

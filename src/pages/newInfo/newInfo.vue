@@ -7,7 +7,7 @@
         </p>
         <hr>
        <div class="content" v-html="newInfo.content"></div>
-       <conainer :id="id"></conainer>
+       <container :id="id"></container>
     </div>
 </template>
 <script>
