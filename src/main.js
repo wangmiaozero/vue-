@@ -42,6 +42,14 @@ Vue.config.productionTip = false
 //设置vue-resource请求跟路径
 Vue.http.options.root="http://www.lovegf.cn:8899/"
 /* eslint-disable no-new */
+//1.导入mint-ui和其样式文件
+import { Lazyload } from 'mint-ui';
+Vue.use(Lazyload);
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+// 2.安装mint-ui(全局注册所有的组件)
+Vue.use(MintUI)
+
 new Vue({
   el: '#app',
   router,

@@ -48,14 +48,17 @@ export default {
                 }
             this.$http.post('api/postcomment/' + this.id,{content:this.msg.trim()})
             .then(result=>{  
-                 let cmt = {
-                    user_name: "匿名用户",
-                    add_time: Date.now(),
-                    content: this.msg.trim()
-                };
-                this.comments.unshift(cmt);
-                this.msg = "";
+                //  let cmt = {
+                //     user_name: "匿名用户",
+                //     add_time: Date.now(),
+                //     content: this.msg.trim()
+                // };
+                //this.comments.unshift(cmt);
+                this.pageIndex=1;
+                this.comments=[];
                 this.getContent();
+                this.msg = "";
+                
             })
         },
         getMoreclick(){
