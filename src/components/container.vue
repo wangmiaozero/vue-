@@ -3,8 +3,8 @@
         <h1>发表评论</h1>
         <hr>
          <!-- <textarea placeholder="请输入要BB的内容（做多吐槽120字）" maxlength="120"></textarea> -->
-        <mt-field placeholder="发表评论(120字)" type="textarea" maxlength="120" rows="4"></mt-field>
-        <mt-button type="primary" size="large"  class="my-button">发表评论</mt-button>
+        <mt-field placeholder="发表评论(120字)" type="textarea" maxlength="120" v-model="msg" rows="4"></mt-field>
+        <mt-button type="primary" size="large"  class="my-button" @click="clicksend">发表评论</mt-button>
         <div class="my-comments-box" v-for="(item, index) in comments" :key="index">
             <div class="my-container">
                 <span>
@@ -22,12 +22,15 @@
     </div>
 </template>
 <script>
+//引入Toast
+import { Toast } from 'mint-ui';
 export default {
     data(){
         return{
           //  id: this.$route.params.id,
             pageIndex: 1,//默认展示第一页
-            comments: []//所有评论
+            comments: [],//所有评论
+            msg:""
         };
     },
     created(){
@@ -38,6 +41,22 @@ export default {
             //获取评论
             this.$http.get('api/getcomments/' + this.id + "?pageindex=" +this.pageIndex)
             .then(result=>this.comments = this.comments.concat(result.body.message))//连接之前的数据
+        },
+        clicksend(){
+             if(this.msg.trim().length=== 0){
+                    return Toast("评论不能为空")
+                }
+            this.$http.post('api/postcomment/' + this.id,{content:this.msg.trim()})
+            .then(result=>{  
+                 let cmt = {
+                    user_name: "匿名用户",
+                    add_time: Date.now(),
+                    content: this.msg.trim()
+                };
+                this.comments.unshift(cmt);
+                this.msg = "";
+                this.getContent();
+            })
         },
         getMoreclick(){
             //点击 加载更多评论

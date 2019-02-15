@@ -19,6 +19,9 @@ Vue.component(SwipeItem.name, SwipeItem)
 //发送请求
 import VueResource from 'vue-resource'
 //引入时间moment
+//安装请求
+Vue.use(VueResource)
+
 import moment from 'moment'
 //设置全局过滤器
 Vue.filter('dateFormat',function(datestr,pattern="YYYY-MM-DD HH:mm:ss"){
@@ -31,8 +34,6 @@ Vue.component(Field.name, Field);
 //注册全局评论组件
 import container from '@/components/container'
 Vue.component('container',container)
-//安装请求
-Vue.use(VueResource)
 //顶部导航栏
 Vue.component(Header.name, Header);
 // require('./config') // 表示引入config目录下的 :
