@@ -52,6 +52,7 @@ export default {
     getThumbs() {
       // 获取缩略图
       this.$http.get('api/getthumimages/' + this.id).then(result => {
+        console.log(result)
         if (result.body.status === 0) {
           // 循环每个图片数据，补全图片的宽和高
           result.body.message.forEach(item => {

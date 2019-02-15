@@ -6,7 +6,9 @@
 						<a :class="['mui-control-item',{'mui-active': item.id == 0}]" 
                         href="#item1mobile" 
                         data-wid="tab-top-subpage-1.html"
-                        v-for="item in categories" :key="item.id">
+                        v-for="item in categories" 
+                        :key="item.id"
+                         @click="getImages(item.id)">
 							{{item.title}}
 						</a>
 					</div>

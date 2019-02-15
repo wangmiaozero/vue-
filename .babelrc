@@ -13,5 +13,8 @@
       "libraryName": "mint-ui",
       "style": true
     }
-  ]]]
+  ]]],
+  "ignore": [
+    "./src/libs/mui/js/mui.min.js"
+  ]
 }
