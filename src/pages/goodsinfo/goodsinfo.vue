@@ -10,10 +10,11 @@
 			</div>
 
 			<div class="mui-card">
-				<div class="mui-card-header">华为（HUAWEI）荣耀6Plus 16G双4G版</div>
+				<div class="mui-card-header">{{goodsinfo.title}}</div>
 				<div class="mui-card-content">
 					<div class="mui-card-content-inner">
-						<p>市场价: ￥2499 销售价: ￥2195 </p>
+                        
+						<p class="my-price"><span class="now">市场价: ￥{{goodsinfo.market_price}}</span> <span class="old">销售价: ￥{{goodsinfo.sell_price}}</span> </p>
                         <div class="price">
                             <span class="price-title">购买数量 : </span> 
                             <input type="button" value="-" @click="count >=2 &&count--" :disabled="count == 1">
@@ -74,7 +75,7 @@ export default {
             this.$http.get('api/goods/getinfo/'+ this.id)
             .then(result=>{
                 if(result.body.status === 0){
-                    console.log(result)
+                   // console.log(result)
                     this.goodsinfo = result.body.message[0]
                 }
             })
@@ -100,6 +101,15 @@ export default {
 <style lang="less">
     .goodsinfo-container{
       background-color: #eee; 
+      .my-price{
+          .now{
+              text-decoration: line-through;
+          }
+          .old{
+              font-size: 20px;
+              color: red;
+          }
+      }
       .price{
         display: flex;
         height: 40px;  

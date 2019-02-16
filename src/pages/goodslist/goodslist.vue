@@ -85,6 +85,9 @@ export default {
                     list-style: none;
                     padding: 5px;
                     margin: 0;
+                    white-space:nowrap;// 强制一行显示
+		            overflow:hidden;  // 隐藏溢出
+		            text-overflow:ellipsis;// 显示省略号
                 }
                 p{
                     padding: 5px;
