@@ -10,6 +10,8 @@ import newphotolinksComponent from '@/pages/newPhotoLinks/newPhotoLinks'
 import photolinksComponent from '@/pages/photoInfo/photoInfo'
 import goodslistComponent from '@/pages/goodslist/goodslist'
 import goodsinfoComponent from '@/pages/goodsinfo/goodsinfo'
+import goodsDescComponent from '@/pages/goodsDesc/goodsDesc'
+import goodsCommentComponent from '@/pages/goodsComment/goodsComment'
 
 Vue.use(Router)
 
@@ -25,7 +27,9 @@ export default new Router({
     {path: '/home/photolinks',component:newphotolinksComponent},
     {path: '/home/photoInfo/:id',component:photolinksComponent},
     {path: '/home/goodslist',component:goodslistComponent},
-    {path: '/hemo/goodsinfo/:id',component:goodsinfoComponent}
+    {path: '/home/goodsinfo/:id',component:goodsinfoComponent},
+    {path: '/home/goodsDesc/:id',component:goodsDescComponent},
+    {path: '/home/goodsComment/:id',component:goodsCommentComponent}
 
   ],
   linkActiveClass:'mui-active'//替换类名 类库

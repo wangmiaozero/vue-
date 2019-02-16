@@ -39,11 +39,9 @@
 				</div>
 				<div class="mui-card-footer">
                      <mt-button type="primary" size="large" plain @click="goDesc(id)">图文介绍</mt-button>
-                    <mt-button type="danger" size="large" plain @click="goComment(id)">商品评论</mt-button>
+                    <mt-button type="danger" size="large" plain @click="mygoComment(id)">商品评论</mt-button>
                 </div>
-			</div>
-			
-			
+			</div>					
     </div>
 </template>
 <script>
@@ -86,8 +84,15 @@ export default {
                 this.count = this.goodsinfo.stock_quantity
             }
         },
+        //跳转详情页面
         goDesc(id){
-            this.$router.push('home/goodsDesc/' + id);
+            this.$router.push('/home/goodsDesc/' + id);
+        },
+        //goods评论页面
+        mygoComment(id){
+            //console.log(id)
+            //this.$router.push({path: '/home/goodsComment/' + id})
+            this.$router.push('/home/goodsComment/' + id)
         },
         //加入购物车
         addToShopCar(){

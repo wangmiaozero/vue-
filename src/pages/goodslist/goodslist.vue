@@ -52,7 +52,7 @@ export default {
         },
         //前往详情页面
         dataTO(id){
-            this.$router.push('/hemo/goodsinfo/' + id)
+            this.$router.push('/home/goodsinfo/' + id)
         }
     }
 }
