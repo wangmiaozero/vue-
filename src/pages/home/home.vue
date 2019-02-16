@@ -1,13 +1,7 @@
 <template>
     <div class="home-container">
         <!--轮播图-->
-        <mt-swipe :auto="4000">
-            <mt-swipe-item v-for="(item,index) in banners" :key="index">
-                <a :href="item.url">
-                    <img :src="item.img">
-                </a>
-            </mt-swipe-item>
-        </mt-swipe>
+        <swiper :banner="banners" :fullscreen="true"></swiper>
         <!--九空格-->
          <ul class="mui-table-view mui-grid-view mui-grid-9 my-ul">
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3 "><router-link to="/home/newLink" class="my-box">
@@ -16,9 +10,9 @@
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/photolinks"  class="my-box">
                                 <img src="@/assets/menu2.png" alt="">
 		                    <div class="mui-media-body">图片分享</div></router-link></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#" class="my-box">
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/goodslist" class="my-box">
                                 <img src="@/assets/menu3.png" alt="">
-		                    <div class="mui-media-body">商品购买</div></a></li>
+		                    <div class="mui-media-body">商品购买</div></router-link></li>
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#" class="my-box">
                                 <img src="@/assets/menu4.png" alt="">
 		                    <div class="mui-media-body">留言反馈</div></a></li>
@@ -32,6 +26,8 @@
     </div>
 </template>
 <script>
+import swiper from '../../components/swiper'
+
 export default {
     data(){
         return {
@@ -47,20 +43,13 @@ export default {
             this.$http.get('api/getlunbo')
             .then(res=>this.banners=res.body.message)
        }
-    }
+    },
+   components:{swiper, swiper}
 }
 </script>
 <style lang="less">
     .home-container {
-        .mint-swipe {
-            height: 200px;
-            .mint-swipe-item {
-                img{
-                    width: 100%;
-                    height: 100%;
-                }
-            }
-        }
+       
         .my-ul{
             background: #fff;
         }
