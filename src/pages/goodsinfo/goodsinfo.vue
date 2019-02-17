@@ -1,5 +1,9 @@
 <template>
     <div class="goodsinfo-container">
+        <!--加入购物车小球动画-->
+        <transition name="my-ball"  @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
+            <div class="ball" ref="ball" v-show="ballflag"></div>
+        </transition>
        		<!--轮播图-->
 			<div class="mui-card">
 				<div class="mui-card-content">
@@ -53,7 +57,8 @@ export default {
             id:this.$route.params.id,
             count:1,
             goodsinfo:{},
-            banner:[]
+            banner:[],
+            ballflag:false
         }
     },
     created(){
@@ -96,7 +101,26 @@ export default {
         },
         //加入购物车
         addToShopCar(){
-
+            this.ballflag = !this.ballflag
+        },
+        beforeEnter(el){
+            el.style.transform="translate(0,0)"
+        },
+        enter(el,done){
+            el.offsetWidth;//必须加
+            //获取小球位置
+            const ballPosition = this.$refs.ball.getBoundingClientRect();
+            //获取购物车位置
+            const shopcarPosition = document.getElementById("shopcar").getBoundingClientRect();
+            const distX = shopcarPosition.left - ballPosition.left;
+            const distY = shopcarPosition.top - ballPosition.top;
+            //执行动画
+            el.style.transform = `translate(${distX}px,${distY}px)`
+            el.style.transition = "all 0.5s cubic-bezier(.4,-0.3,1,.68)"
+            done()
+        },
+        afterEnter(el){
+            this.ballflag = !this.ballflag
         }
     },
     components:{'myswiper': swiper}
@@ -141,6 +165,16 @@ export default {
           button {
               margin: 15px 0;
           }
+      }
+      .ball{
+          width: 15px;
+          height: 15px;
+          background-color: red;
+          border-radius: 50%;
+          position: absolute;
+          z-index: 99;
+          top: 411px;
+          left: 133px;
       }
     }
 </style>
