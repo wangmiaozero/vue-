@@ -17,7 +17,8 @@
     "vue-concise-slider": "^3.3.8",
     "vue-pic-preview": "^1.0.2",
     "vue-resource": "^1.5.1",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-scroller": "^2.2.4"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

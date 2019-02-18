@@ -37,6 +37,9 @@ Vue.filter('dateFormat',function(datestr,pattern="YYYY-MM-DD HH:mm:ss"){
 // 安装vue-pic-preview
 import VuePreview from 'vue-pic-preview'
 Vue.use(VuePreview)
+//引入vue-scroller
+import VueScroller from 'vue-scroller'
+Vue.use(VueScroller)
 new Vue({
   el: '#app',
   router,
