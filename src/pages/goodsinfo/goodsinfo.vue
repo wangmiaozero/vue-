@@ -18,7 +18,10 @@
 				<div class="mui-card-content">
 					<div class="mui-card-content-inner">
                         
-						<p class="my-price"><span class="now">市场价: ￥{{goodsinfo.market_price}}</span> <span class="old">销售价: ￥{{goodsinfo.sell_price}}</span> </p>
+						<p class="my-price">
+                            <span class="now">市场价: ￥{{goodsinfo.market_price}}</span>
+                             <span class="old">销售价: ￥{{goodsinfo.sell_price}}</span> 
+                        </p>
                         <div class="price">
                             <span class="price-title">购买数量 : </span> 
                             <input type="button" value="-" @click="count >=2 &&count--" :disabled="count == 1">
@@ -102,6 +105,12 @@ export default {
         //加入购物车
         addToShopCar(){
             this.ballflag = !this.ballflag
+            this.$store.commit('addToCar',{
+                id:this.goodsinfo.id,
+                count:this.count,
+                price:this.goodsinfo.sell_price,
+                selected:true
+            })
         },
         beforeEnter(el){
             el.style.transform="translate(0,0)"

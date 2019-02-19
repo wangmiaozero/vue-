@@ -40,9 +40,50 @@ Vue.use(VuePreview)
 //引入vue-scroller
 import VueScroller from 'vue-scroller'
 Vue.use(VueScroller)
+//引入vuex
+import Vuex from 'vuex'
+Vue.use(Vuex)
+//加入购物车的业务逻辑:
+//    1.即将要加入的商品是否在购物车已存在
+//    2.如果存在只需要更新数量信息即可
+//    3.如果不存在只需要push进car数组即可
+let store = new Vuex.Store({
+    state:{
+      car:[],//{id,price,count,selected}
+    },
+    mutations:{
+      addToCar(state,goodsinfo){
+        //假设法
+        // let flag =false
+        // state.car.some(item =>{
+        //   if(item.id === goodsinfo.id){
+        //     item.count +=parseInt(goodsinfo.count)
+        //     return true
+        //   }
+        // })
+        // if(!flag){
+        //   state.car.push(goodsinfo)   
+        // }
+        let index = state.car.findIndex(item=>item.id===goodsinfo.id)
+        if(index === -1){
+          state.car.push(goodsinfo)
+        }else{
+          state.car[index].count +=parseInt(goodsinfo.count)
+        }
+      }
+    },
+    getter:{
+      totalCount(state){
+        let sum = 0;
+        state.car.forEach(item=>{sum+=item.count})
+        return sum
+      }
+    }
+})
 new Vue({
   el: '#app',
   router,
   render: h => h(App),
-  components: { App }
+  components: { App },
+  store:store
 })
